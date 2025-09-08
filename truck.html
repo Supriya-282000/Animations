@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truck Task</title>
+    <style>
+        body{
+            margin: 0;
+            overflow: hidden;
+        }
+        .background{
+            margin: 0;
+            background: linear-gradient(skyblue,lightblue,azure,white);
+            display: flex;
+            flex-wrap: wrap;
+            height: 100vh;
+            width: 100%;
+            animation: night 6s ease;
+        }
+        @keyframes night{
+            0%{
+                background: linear-gradient(skyblue,lightblue,azure,white);
+            }
+            50%{
+                background: linear-gradient(rgb(252, 195, 91),lightgray,azure,white);
+                transform: translateZ(100%);
+            }
+            100%{
+                background: linear-gradient(black,gray,white);
+                transform: translateZ(100px);
+            }
+        }
+        .sun{
+            height: 50px;
+            width: 50px;
+            border: 1px black solid;
+            border-radius: 50%;
+            background: linear-gradient(90deg,red,orange,yellow);
+            display: flex;
+            top: 26px;
+            left: 760px;
+            box-shadow: -5px -5px 10px rgb(255, 149, 0), 5px 5px 8px rgb(255, 149, 0);
+            position: absolute;
+            animation: sunmove 10s ease none;
+        }
+        @keyframes sunmove{
+            0%{
+                height: 50px;
+                width: 50px;
+                top: 25px;
+                left: 760px;
+            }
+            45%{
+                height: 50px;
+                width: 50px;
+                top: 80px;
+                left: 760px;
+                transform: translateX(-1400px);
+                background: linear-gradient(orange,white);
+            }
+            70%{
+                height: 50px;
+                width: 50px;
+                top: 120px;
+                left: 1860px;
+                transform: translateY(500px);
+                opacity: 0;
+                background: linear-gradient(orange,white);
+            }
+            100%{
+                right: -2000px;
+                background: linear-gradient(orange,white);
+            }
+
+        }
+        .building1{
+            height: 350px;
+            width: 200px;
+            border: 2px black solid;
+            margin-top: 105px;
+            margin-left: 150px;
+            background-color: antiquewhite;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+        .window1{
+            height: 40px;
+            width: 40px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-top: 22px;
+            margin-left: 20px;
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .window2{
+            height: 40px;
+            width: 40px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-top: 22px;
+            margin-left: 20px;
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .window3{
+            height: 40px;
+            width: 40px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-top: 22px;
+            margin-left: 20px;
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .window4{
+            height: 40px;
+            width: 40px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-top: 22px;
+            margin-left: 20px;
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .window5{
+            height: 40px;
+            width: 40px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-top: 22px;
+            margin-left: 20px;
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .window6{
+            height: 40px;
+            width: 40px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-top: 22px;
+            /* margin-right: 80px; */
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .window7{
+            height: 40px;
+            width: 40px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-top: 22px;
+            /* margin-right: 80px; */
+            background: linear-gradient(lightblue,azure,white);
+
+        }
+        .window8{
+            height: 40px;
+            width: 40px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-top: 22px;
+            /* margin-right: 80px; */
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .window9{
+            height: 40px;
+            width: 40px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-top: 22px;
+            /* margin-right: 0px; */
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .window10{
+            height: 40px;
+            width: 40px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-top: 22px;
+            /* margin-right: 80px; */
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .window11{
+            height: 40px;
+            width: 40px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-top: 22px;
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .window12{
+            height: 40px;
+            width: 40px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-top: 22px;
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .window13{
+            height: 40px;
+            width: 40px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-top: 22px;
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .window14{
+            height: 40px;
+            width: 40px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-top: 22px;
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .window15{
+            height: 40px;
+            width: 40px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-top: 22px;
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .building2{
+            height: 200px;
+            width: 125px;
+            border: 2px black solid;
+            background-color: antiquewhite;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            margin-left: 500px;
+            margin-top: 255px;
+        }
+        .b2window1{
+            height: 30px;
+            width: 30px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-top: 22px;
+            margin-left: 20px;
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .b2window2{
+            height: 30px;
+            width: 30px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-top: 22px;
+            margin-left: 20px;
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .b2window3{
+            height: 30px;
+            width: 30px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-top: 22px;
+            margin-left: 20px;
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .b2window6{
+            height: 30px;
+            width: 30px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-top: 10px;
+            /* margin-right: 80px; */
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .b2window7{
+            height: 30px;
+            width: 30px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-top: 10px;
+            /* margin-right: 80px; */
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .b2window8{
+            height: 30px;
+            width: 30px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-top: 10px;
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .building3{
+            height: 380px;
+            width: 250px;
+            border: 4px black solid;
+            margin-top: 70px;
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-template-rows: auto auto auto;
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .wbox{
+            border: 2px black solid;
+        }
+        .wbox:nth-child(1){
+            grid-column: 1/4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80px;
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .building4{
+            height: 160px;
+            width: 95px;
+            border: 2px black solid;
+            background-color: antiquewhite;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            margin-top: 295px;
+        }
+        .b4window1{
+            height: 30px;
+            width: 30px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-left: 8px;
+            margin-top: 20px;
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .b4window2{
+            height: 30px;
+            width: 30px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-left: 8px;
+            margin: 10px;
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .b4window3{
+            height: 30px;
+            width: 30px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .b4window4{
+            height: 30px;
+            width: 30px;
+            border: 2px black solid;
+            background-color: azure;
+            margin-bottom: 20px;
+            margin-right: 10px;
+            background: linear-gradient(lightblue,azure,white);
+        }
+        .road{
+            height: 250px;
+            width: 109.1%;
+            border: 2px black solid;
+            /* margin-top: 70px; */
+            background-color: black;
+            display: flex;
+            transform: rotateX(50deg) translateZ(50px);
+            position: relative;
+            bottom: 14px;
+            align-items: center;
+            justify-content: center;
+            justify-content: space-around;
+        }
+        .strip1{
+            height: 15px;
+            width: 200px;
+            background-color: white;
+            position: relative;
+        }
+        .strip2{
+            height: 15px;
+            width: 200px;
+            background-color: white;
+        }
+        .strip3{
+            height: 12px;
+            width: 200px;
+            background-color: white;
+        }
+        .barigate{
+            height: 80px;
+            width: 100%;
+            border: 2px black solid;
+            background-color: gray;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .bar1{
+            height: 50px;
+            width: 120px;
+            border: 1px black solid;
+            margin-top: 27px;
+            background-color: white;
+            /* margin-left: 20px; */
+        }
+        .bar2{
+            height: 50px;
+            width: 120px;
+            border: 1px black solid;
+            margin-top: 27px;
+            background-color: white;
+        }
+        .bar3{
+            height: 50px;
+            width: 120px;
+            border: 1px black solid;
+            margin-top: 27px;
+            background-color: white;
+        }
+        .bar4{
+            height: 50px;
+            width: 120px;
+            border: 1px black solid;
+            margin-top: 27px;
+            background-color: white;
+        }
+        .bar5{
+            height: 50px;
+            width: 120px;
+            border: 1px black solid;
+            margin-top: 27px;
+            background-color: white;
+        }
+        .bar6{
+            height: 50px;
+            width: 120px;
+            border: 1px black solid;
+            margin-top: 27px;
+            background-color: white;
+        }
+        .truck{
+            height: 450px;
+            width: 900px;
+           padding: 1px;
+            position: absolute;
+            animation: move 8s ease;
+            left: 80px;
+            top: 40px;
+        }
+        @keyframes move{
+            to{
+                transform: translateX(970px);
+            }
+        }
+        .parent{
+            height: 100px;
+            width: 600px;
+            display: flex;
+            column-gap: 20px;
+            position: relative;
+            bottom: 30px;  
+        }
+        .backwhell{
+            height: 40px;
+            width: 40px;
+            border: 15px black solid;
+            border-radius: 50%;
+            background-color: azure;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .backinnerwhell{
+            height: 20px;
+            width: 20px;
+            border: 1px black solid;
+            border-radius: 50%;
+            background-color: black;
+        }
+        .middlewhell{
+            height: 40px;
+            width: 40px;
+            border: 15px black solid;
+            border-radius: 50%;
+            background-color: azure;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            left: 100px;
+            column-gap: 100px;
+        }
+        .midinnerwhell{
+            height: 20px;
+            width: 20px;
+            border: 1px black solid;
+            border-radius: 50%;
+            background-color: black;
+        }
+        .dieseltank{
+            height: 30px;
+            width: 50px;
+            border: 2px black solid;
+            background-color: brown;
+            margin-left: 50px;
+            margin-top: 15px;
+        }
+        .innerdieseltank{
+            height: 30px;
+            width: 10px;
+            border: 1px black solid;
+            margin-left: px;
+            background-color: brown;
+        }
+        .frontwhell{
+            height: 40px;
+            width: 40px;
+            border: 15px black solid;
+            border-radius: 50%;
+            background-color: azure;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 50px
+        }
+        .frontinnerwhell{
+            height: 20px;
+            width: 20px;
+            border: 1px black solid;
+            border-radius: 50%;
+            background-color: black;
+        }
+        .connectingbar{
+            height: 40px;
+            width: 390px;
+            border: 2px black solid;
+            background-color: purple;
+            position: relative;
+            right: 70px;
+            bottom: 3.2px;
+        }
+        .container{
+            height: 230px;
+            width: 380px;
+            border: 2px black solid;
+            background-color: blue;
+            position: relative;
+            top: 270px; 
+            right: 70px;
+        }
+        .face{
+            height: 190px;
+            width: 140px;
+            border: 2px black solid;
+            position: relative;
+            left: 320px;
+            top: 40px;
+            border-top-right-radius: 80px;
+            background-color: red;
+        }
+        .truckwindow{
+            height: 80px;
+            width: 100px;
+            border: 2px black solid;
+            position: relative;
+            left: 20px;
+            top: px;
+            border-top-right-radius: 80px;
+            background-color: white;
+        }
+        .facetop{
+            height: 70px;
+            width: 80px;
+            border: 2px black solid;
+            position: relative;
+            left: 320px;
+            top: 38px;
+            border-top-right-radius: 80px;
+            background-color: red;   
+        }
+        .headlight{
+            height: 20px;
+            width: 3px;
+            border: 2px black solid;
+            position: relative;
+            top: 130px;
+            left: 139px;
+            display: flex;
+            background-color: skyblue;
+            border-radius: 50%;
+            box-shadow: 10px 10px 10px whitesmoke;
+        }
+        .plane{
+            height: 80px;
+            width: 80px;
+            position: relative;
+            left: 1250px;
+            bottom: 20px;
+            animation: move1 1.5s ease forwards;
+        }
+        @keyframes move1{
+            to{
+                transform: translateX(-1500px);
+                height: 80px;
+                width: 80px;
+                opacity: 0;
+            }
+        }
+        .plane1{
+            width: 320px;
+        }
+        .birds{
+            height: 60px;
+            width: 60px;
+            position: absolute;
+            left: 440px;
+            top: 70px;
+            animation: birds 6s ease;
+        }
+        @keyframes birds{
+            to{
+                height: 60px;
+                width: 60px;
+                transform: translateX(500px);
+                opacity: 0;
+                bottom: px;
+            }
+        }
+        img{
+            width: 150px;
+        }
+        .moon{
+            height: 50px;
+            width: 50px;
+            border: 2px black solid;
+            border-radius: 50%;
+            background: linear-gradient(azure,lightblue,white);
+            box-shadow: -2px -2px 6px azure, 2px 2px 6px rgb(249, 200, 109);
+            position: absolute;
+            right: -80px;
+            animation: moon 7s ease-out;
+            top: 20px;
+        }
+        @keyframes moon{
+            0%{
+                right: -50px;
+                top: 20px;
+                transform: translateX(1500px);
+                background: linear-gradient(azure,lightblue,orange,lightgray,white);
+            }
+            30%{
+                right: 600px;
+                background: linear-gradient(rgb(253, 204, 113),azure,rgb(253, 204, 113));
+            }
+            65%{
+                right: 1200px;
+            }
+            100%{
+                right: 1800px;
+            }
+        }
+        .grass>img{
+            height: 90px;
+            width: 90px;
+            position: relative;
+            bottom: 90px;
+            display: inline;
+            justify-content: space-between;
+            margin-left: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="background">
+    <div class="birds"><img src="birds.gif" alt=""></div>
+    <div class="moon"></div>
+    <div class="sun"></div>
+    <div class="plane"><img class="plane1" src="aeroplane.png" alt=""></div>
+    <div class="building1">
+        <div class="window1"></div>
+        <div class="window2"></div>
+        <div class="window3"></div>
+        <div class="window4"></div>
+        <div class="window5"></div>
+        <div class="window6"></div>
+        <div class="window7"></div>
+        <div class="window8"></div>
+        <div class="window9"></div>
+        <div class="window10"></div>
+        <div class="window11"></div>
+        <div class="window12"></div>
+        <div class="window13"></div>
+        <div class="window14"></div>
+        <div class="window15"></div>  
+    </div>
+    <div class="building2">
+        <div class="b2window1"></div>
+        <div class="b2window2"></div>
+        <div class="b2window3"></div>
+        <div class="b2window4"></div>
+        <div class="b2window5"></div>
+        <div class="b2window6"></div>
+        <div class="b2window7"></div>
+        <div class="b2window8"></div>
+    </div>
+    <div class="building3">
+        <div class="wbox"><h1>PYSPIDER BASAVANAGUDI</h1></div>
+        <div class="wbox"></div>
+        <div class="wbox"></div>
+        <div class="wbox"></div>
+        <div class="wbox"></div>
+        <div class="wbox"></div>
+        <div class="wbox"></div>
+        <div class="wbox"></div>
+        <div class="wbox"></div>
+        <div class="wbox"></div>
+        <div class="wbox"></div>
+        <div class="wbox"></div>
+        <div class="wbox"></div>
+    </div>
+    <div class="building4">
+        <div class="b4window1"></div>
+        <div class="b4window2"></div>
+        <div class="b4window3"></div>
+        <div class="b4window4"></div>
+    </div>
+    <div class="barigate">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+        <div class="bar4"></div>
+        <div class="bar5"></div>
+        <div class="bar6"></div>
+    </div>
+        <div class="road">
+            <div class="strip1"></div>
+            <div class="strip2"></div>
+            <div class="strip3"></div>
+        </div>
+        <div class="truck">
+            <div class="container"></div>
+            <div class="facetop">
+            </div>
+            <div class="face">
+                <div class="headlight"></div>
+                <div class="truckwindow"></div>
+            </div>
+            <div class="connectingbar"></div>
+            <div class="parent">
+                <div class=" backwhell">
+                    <div class="backinnerwhell"></div>
+                </div>
+                <div class="middlewhell">
+                    <div class="midinnerwhell"></div>
+                </div>
+                <div class="dieseltank">
+                    <div class="innerdieseltank"></div>
+                </div>
+                <div class="frontwhell">
+                    <div class="frontinnerwhell"></div>
+                </div>
+            </div>
+        </div>
+</div>
+       <div class="grass">
+        <img src="grass.png" alt="">
+        <img src="grass.png" alt="">
+        <img src="grass.png" alt="">
+        <img src="grass.png" alt="">
+        <img src="grass.png" alt="">
+        <img src="grass.png" alt="">
+        <img src="grass.png" alt="">
+        <img src="grass.png" alt="">
+        <img src="grass.png" alt="">
+        <img src="grass.png" alt="">
+        <img src="grass.png" alt="">
+        <img src="grass.png" alt="">
+        <img src="grass.png" alt="">
+        <img src="grass.png" alt="">
+        <img src="grass.png" alt="">
+        <img src="grass.png" alt="">
+        <img src="grass.png" alt="">
+        <img src="grass.png" alt="">
+        <img src="grass.png" alt="">
+        <img src="grass.png" alt="">
+        <img src="grass.png" alt="">
+        <img src="grass.png" alt="">
+       </div>
+</body>
+</html>
